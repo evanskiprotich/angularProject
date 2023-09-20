@@ -6,12 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-first-comp.component.scss']
 })
 export class MyFirstCompComponent {
-
   name: string = ''
   email: string = ''
   message: string = ''
+  isSubmitted: boolean = false
+  messages: Array<any> = []
 
   onSubmit(): void {
-    console.log(this.name);
+    this.isSubmitted = true;
+    this.messages.push({
+      'name': this.name,
+      'email': this.email,
+      'message': this.message
+    })
+    console.log(this.messages);
+    
   }
+  deleteMessage(index: number) {
+    this.messages.splice(index, 1)
+}
 }
